@@ -1,2 +1,2 @@
-1,manzanas,0.40,34
+1,manzanas,0.25,34
 2,platano,1.20,100

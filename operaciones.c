@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "verificadores.h"
+#include "lecturas.h"
 
 #define MAX_PRODUCTOS 100
 #define MAX_LONGITUD_NOMBRE 50
@@ -18,9 +19,8 @@ void agregarProducto() {
     float precio;
     char nombre[MAX_LONGITUD_NOMBRE];
 
-    printf("Ingrese el identificador del producto: ");
-    scanf("%d", &id);
-
+    id=leerEnteroPositivo("Ingrese el identificador del producto: ");
+   
     // Verificar si el identificador ya existe
     if (verificarIdentificadorExistente(id)) {
         printf("Error: El identificador ya existe.\n");
@@ -29,10 +29,8 @@ void agregarProducto() {
 
     printf("Ingrese el nombre del producto: ");
     scanf(" %[^\n]", nombre);
-    printf("Ingrese el precio del producto: ");
-    scanf("%f", &precio);
-    printf("Ingrese la cantidad del producto: ");
-    scanf("%d", &cantidad);
+    precio=leerFlotantePositivo("Ingrese el precio del producto: ");
+    cantidad=leerEnteroPositivo("Ingrese la cantidad del producto: ");
 
     FILE *archivo = fopen("inventario.txt", "a");
     if (archivo == NULL) {
@@ -50,8 +48,7 @@ void agregarProducto() {
 void borrarProducto() {
     int id;
 
-    printf("Ingrese el identificador del producto a borrar: ");
-    scanf("%d", &id);
+    id=leerEnteroPositivo("Ingrese el identificador del producto a borrar: ");
 
     int indice = buscarProductoPorId(id);
     if (indice == -1) {
@@ -90,13 +87,13 @@ void borrarProducto() {
 
     printf("Producto borrado correctamente.\n");
 }
+
 // Función para modificar el precio de un producto en el inventario
 void modificarPrecio() {
     int id;
     float nuevoPrecio;
 
-    printf("Ingrese el identificador del producto a modificar: ");
-    scanf("%d", &id);
+    id=leerEnteroPositivo("Ingrese el identificador del producto a modificar: ");
 
     int indice = buscarProductoPorId(id);
     if (indice == -1) {
@@ -104,8 +101,7 @@ void modificarPrecio() {
         return;
     }
 
-    printf("Ingrese el nuevo precio del producto: ");
-    scanf("%f", &nuevoPrecio);
+    nuevoPrecio=leerFlotantePositivo("Ingrese el nuevo precio del producto: ");
 
     FILE *archivo = fopen("inventario.txt", "r");
     if (archivo == NULL) {
@@ -149,8 +145,7 @@ void modificarCantidad() {
     int id;
     int nuevaCantidad;
 
-    printf("Ingrese el identificador del producto a modificar: ");
-    scanf("%d", &id);
+    id=leerEnteroPositivo("Ingrese el identificador del producto a modificar: ");
 
     int indice = buscarProductoPorId(id);
     if (indice == -1) {
@@ -158,8 +153,7 @@ void modificarCantidad() {
         return;
     }
 
-    printf("Ingrese la nueva cantidad del producto: ");
-    scanf("%d", &nuevaCantidad);
+    nuevaCantidad=leerEnteroPositivo("Ingrese la nueva cantidad del producto: ");
 
     FILE *archivo = fopen("inventario.txt", "r");
     if (archivo == NULL) {

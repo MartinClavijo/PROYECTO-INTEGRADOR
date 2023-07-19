@@ -18,7 +18,7 @@ int main() {
     do{
         menuPrincipal();
 
-        scanf("%d", &opcPrincipal);
+        opcPrincipal=leerEnteroPositivo("Ingrese la opción a realizar: ");
 
         switch (opcPrincipal) {
             
@@ -39,7 +39,7 @@ int main() {
 
                 do{
                     menuModificar();
-                    scanf("%d", &opcModificar);
+                    opcModificar=leerEnteroPositivo("Ingrese la opción a realizar: ");
 
                     switch(opcModificar){
 
@@ -65,7 +65,9 @@ int main() {
 
                         default:{
 
-                        printf("Opción inválida. Intente nuevamente.\n");
+                            printf("\n");
+                            printf("Opción inválida. Intente nuevamente.\n");
+                            printf("\n");
 
                         }break;
                     }
@@ -91,7 +93,9 @@ int main() {
                 
             default:{
 
+                printf("\n");
                 printf("Opción inválida. Intente nuevamente.\n");
+                printf("\n");
 
             }break;
                 
