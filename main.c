@@ -10,7 +10,9 @@
 
 int main() {
 
-    printf("\t\t\t********Bienvenido al inventario de Sarita********");
+    printf("\n");
+    printf("\t\t\t******** Bienvenido al inventario de Sarita ********");
+    printf("\n");
 
     int opcPrincipal;
     int opcModificar;

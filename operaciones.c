@@ -11,7 +11,9 @@ int numProductos = 0;
 // Función para agregar un producto al inventario
 void agregarProducto() {
     if (numProductos == MAX_PRODUCTOS) {
+        printf("\n");
         printf("Error: No se pueden agregar más productos.\n");
+        printf("\n");
         return;
     }
 
@@ -20,6 +22,7 @@ void agregarProducto() {
     char nombre[MAX_LONGITUD_NOMBRE];
 
     id=leerEnteroPositivo("Ingrese el identificador del producto: ");
+    printf("\n");
    
     // Verificar si el identificador ya existe
     if (verificarIdentificadorExistente(id)) {
@@ -41,6 +44,7 @@ void agregarProducto() {
     fprintf(archivo, "%d,%s,%.2f,%d\n", id, nombre, precio, cantidad);
     fclose(archivo);
 
+    printf("\n");
     printf("Producto agregado correctamente.\n");
 }
 
@@ -52,6 +56,7 @@ void borrarProducto() {
 
     int indice = buscarProductoPorId(id);
     if (indice == -1) {
+        printf("\n");
         printf("Error: El identificador no existe.\n");
         return;
     }
@@ -85,6 +90,7 @@ void borrarProducto() {
     remove("inventario.txt");
     rename("inventario_temp.txt", "inventario.txt");
 
+    printf("\n");
     printf("Producto borrado correctamente.\n");
 }
 
@@ -97,7 +103,9 @@ void modificarPrecio() {
 
     int indice = buscarProductoPorId(id);
     if (indice == -1) {
+        printf("\n");
         printf("Error: El identificador no existe.\n");
+        printf("\n");
         return;
     }
 
@@ -146,6 +154,7 @@ void modificarCantidad() {
     int nuevaCantidad;
 
     id=leerEnteroPositivo("Ingrese el identificador del producto a modificar: ");
+    printf("\n");
 
     int indice = buscarProductoPorId(id);
     if (indice == -1) {
